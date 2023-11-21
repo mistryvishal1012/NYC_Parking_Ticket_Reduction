@@ -83,8 +83,8 @@ if st.button("Calculate"):
     parking_data['Interest Amount'] = interest_amount
     parking_data['Payment Amount'] = payment_amount
     parking_data['Amount Due'] = amount_due
-    parking_data['Violation Precinct'] = violation_precint
-    parking_data['Issuer Precinct'] = issuer_percint
+    parking_data['Violation Precinct_'+violation_precint] = 1
+    parking_data['Issuer Precinct_'+issuer_percint] = 1
     if (int(fine_amount) > int(actual_fine_amount)):
         parking_data['Is_High'] = True
     else:
@@ -98,7 +98,7 @@ if st.button("Calculate"):
     parking_data['Time_' +violation_time+':00'] = 1
     parking_data['DayOfWeek_' +day_of_week] = 1
     result = predict(parking_data)
-    st.text(f'Your Price can be Reduced to : ${result[0]}')
+    st.text(f'Your Parking Ticet can be Reduced by {result[0]} %')
     # st.text(parking_data)
     # st.text(violation_time)
 
